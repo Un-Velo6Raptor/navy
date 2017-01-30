@@ -5,10 +5,11 @@
 ## Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ## 
 ## Started on  Mon Jan 30 14:28:05 2017 Sahel
-## Last update Mon Jan 30 14:30:52 2017 Sahel
+## Last update Mon Jan 30 18:50:53 2017 Sahel
 ##
 
-SRC	=	bite.c
+SRC	=	core.c	\
+		game.c
 
 OBJ	=	$(SRC:.c=.o)
 
