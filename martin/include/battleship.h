@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Tue Jan 31 14:52:58 2017 Sahel
+** Last update Tue Jan 31 16:32:25 2017 
 */
 
 #ifndef		BATTLESHIP_H_
@@ -18,6 +18,13 @@ typedef struct	s_map
   char		**my_map;
   char		**enemy_map;
 }		t_map;
+
+typedef struct  s_g_glob;
+{
+  char		**av;
+  char		byte;
+  int		pid;
+}		t_g_glob;
 
 /*
 **		Prototypes of file's sources.
