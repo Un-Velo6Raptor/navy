@@ -5,11 +5,13 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Mon Jan 30 19:38:21 2017 
+** Last update Tue Jan 31 14:03:01 2017 
 */
 
 #ifndef		BATTLESHIP_H_
 # define	BATTLESHIP_H_
+
+# include	"get_next_line.h"
 
 typedef struct	s_map
 {
@@ -26,6 +28,7 @@ char		my_binary_to_char(char *);
 int		help_me(void);
 t_map		*ini_map(void);
 void		disp_map(char **);
+int		check_coo(int, char *, char *);
 
 /*
 **		Prototypes of file's basics.
@@ -37,11 +40,17 @@ char		*my_strcpy(char *, char *);
 char		*my_strdup(char *);
 void		my_putstr(char *);
 char		**my_path_tab(char *);
+int		my_char_isnum(char);
+int		count_tab(char **);
+int		my_getnbr(char *);
+int		free_tab(char **, int);
+int		my_strcmp(char *, char *);
+void		ini_gnl(t_buffer *);
 
 /*
 **		Prototypes of get_next_line.
 */
 
-char		*get_next_line(int);
+char		*get_next_line(int, t_buffer *);
 
 #endif		/* !BATTLESHIP_H_ */

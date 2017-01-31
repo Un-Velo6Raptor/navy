@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 19:34:40 2017 
-** Last update Mon Jan 30 19:37:48 2017 
+** Last update Mon Jan 30 21:12:29 2017 
 */
 
 #include	<stdlib.h>
@@ -46,7 +46,6 @@ char		**my_path_tab(char *vpath)
       path[path_i][str_i] = '\0';
       path_i++;
     }
-  free(vpath);
   path[path_i] = NULL;
   return (path);
 }

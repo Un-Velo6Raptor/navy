@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan  2 13:05:09 2017 
-** Last update Tue Jan 31 14:08:26 2017 
+** Last update Tue Jan 31 14:07:51 2017 
 */
 
 #include	<unistd.h>
@@ -79,8 +79,7 @@ char			*put_excedent(char *buffer, int *idx, int *cpt)
 
   idx2 = 0;
   tmp = (*idx);
-  if (buffer[*idx] != '\0')
-    (*idx)++;
+  (*idx)++;
   *cpt = 0;
   if ((new_str = malloc(sizeof(char) * (READ_SIZE + 1))) == NULL)
     return (NULL);
@@ -94,31 +93,29 @@ char			*put_excedent(char *buffer, int *idx, int *cpt)
   return (new_str);
 }
 
-char			*get_next_line(const int fd, t_buffer *ns)
+char			*get_next_line(const int fd)
 {
+  static t_buffer	news = {{0}, 0, 0, 0};
   char			*result;
 
   result = NULL;
-  if ((*ns).cpt != 0 || fd < 0)
+  if (news.cpt != 0 || fd < 0)
     return (NULL);
-  if ((result = put_excedent((*ns).buffer, &(*ns).idx, &(*ns).size)) != NULL)
-    if (end((*ns).buffer, 1, (*ns).idx) != end((*ns).buffer, 0, (*ns).idx))
+  if ((result = put_excedent(news.buffer, &news.idx, &news.size)) != NULL)
+    if (end(news.buffer, 1, news.idx) != end(news.buffer, 0, news.idx))
       return (result);
-  (*ns).idx = 0;
+  news.idx = 0;
   while (fd >= 0 && READ_SIZE < 2147483646 && READ_SIZE > 0 &&
-	 ((*ns).size = read(fd, (*ns).buffer, READ_SIZE)) > 0)
+	 (news.size = read(fd, news.buffer, READ_SIZE)) > 0)
     {
-      (*ns).buffer[(*ns).size] = '\0';
-      if (((*ns).idx = end((*ns).buffer, 0, 0)) != (*ns).size)
-	{
-	  if ((result = my_realloc(result, (*ns).buffer, (*ns).idx)) == NULL)
-	    return (NULL);
-	  return (result);
-	}
-      else if ((result = my_realloc(result, (*ns).buffer, -1)) == NULL)
+      news.buffer[news.size] = '\0';
+      if ((news.idx = end(news.buffer, 0, 0)) != news.size)
+	return (((result = my_realloc(result, news.buffer,
+				      news.idx)) == NULL) ? NULL : result);
+      else if ((result = my_realloc(result, news.buffer, -1)) == NULL)
 	return (NULL);
     }
-  (*ns).cpt = 1;
-  return ((((*ns).size != 0 || (*ns).idx != 0) && (*ns).size != -1) ?
-	  result : free_or_not(result, (*ns).buffer, (*ns).size, (*ns).idx));
+  news.cpt++;
+  return (((news.size != 0 || news.idx != 0) && news.size != -1) ?
+	  result : free_or_not(result, news.buffer, news.size, news.idx));
 }
