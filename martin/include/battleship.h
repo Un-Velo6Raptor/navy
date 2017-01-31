@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Tue Jan 31 14:03:01 2017 
+** Last update Tue Jan 31 14:52:58 2017 Sahel
 */
 
 #ifndef		BATTLESHIP_H_
@@ -29,6 +29,11 @@ int		help_me(void);
 t_map		*ini_map(void);
 void		disp_map(char **);
 int		check_coo(int, char *, char *);
+char		*receive(int);
+void		send(int, char *);
+void		turn_part1(char **, char **, int);
+void		turn_part2(char **, char **, int);
+int		prepare_map(t_map *, int, char **);
 
 /*
 **		Prototypes of file's basics.
