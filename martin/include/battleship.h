@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Tue Jan 31 16:32:25 2017 
+** Last update Tue Jan 31 18:46:19 2017 Sahel
 */
 
 #ifndef		BATTLESHIP_H_
@@ -19,12 +19,12 @@ typedef struct	s_map
   char		**enemy_map;
 }		t_map;
 
-typedef struct  s_g_glob;
+typedef struct  s_glob
 {
   char		**av;
   char		byte;
   int		pid;
-}		t_g_glob;
+}		t_glob;
 
 /*
 **		Prototypes of file's sources.
@@ -38,8 +38,8 @@ void		disp_map(char **);
 int		check_coo(int, char *, char *);
 char		*receive(int);
 void		send(int, char *);
-void		turn_part1(char **, char **, int);
-void		turn_part2(char **, char **, int);
+void		turn_part1(char **, char **, int, int);
+void		turn_part2(char **, char **, int, int);
 int		prepare_map(t_map *, int, char **);
 
 /*

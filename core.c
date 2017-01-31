@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:25:13 2017 Sahel
-** Last update Mon Jan 30 18:50:36 2017 Sahel
+** Last update Tue Jan 31 14:32:15 2017 Sahel
 */
 
 #include <signal.h>
@@ -72,13 +72,16 @@ void	send(int pid, char *binary)
 void	connect(int signal, siginfo_t *act, void *null)
 {
   int	pid2;
+  t_map	*maps;
 
   (void) signal;
   pid2 = act->si_pid;
   printf("ennemy connected\n");
   kill(pid2, SIGUSR1);
   usleep(100000);
-  turn_part2(map, map2, pid2);
+  if (!(maps = ini_map()) || prepare_map(maps, ac, av) == 84)
+    return (84);
+  turn_part2(maps->my_map, maps->enemy_map, pid2);
 }
 
 void	connect2(int signal)
@@ -90,7 +93,10 @@ void	connect2(int signal)
 int			main(int ac, char **av)
 {
   struct sigaction	act;
+  t_map			*maps;
 
+  if (ac == 1 || argc > 3)
+    return (help_me());
   act.sa_sigaction = &connect;
   act.sa_flags = SA_SIGINFO;
   printf("my_pid:\t%i\n", getpid());
@@ -105,6 +111,9 @@ int			main(int ac, char **av)
       kill(atoi(av[1]), SIGUSR1);
       signal(SIGUSR1, connect2);
       sleep(20);
-      turn_part1(map, map2, atoi(av[1]));
+      if (!(maps = ini_map()) || prepare_map(maps, ac, av) == 84)
+	return (84);
+      disp_map(maps);
+      turn_part1(maps->my_map, maps->enemy_map, atoi(av[1]));
     }
 }

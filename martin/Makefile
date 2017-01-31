@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 15:37:45 2017 
-## Last update Tue Jan 31 14:02:03 2017 
+## Last update Tue Jan 31 14:25:46 2017 Sahel
 ##
 
 SRC	=	src/main.c			\
@@ -13,7 +13,9 @@ SRC	=	src/main.c			\
 		src/ini_map.c			\
 		src/disp_map.c			\
 		src/check_coo.c			\
-		src/my_char_to_binary.c
+		src/my_char_to_binary.c		\
+		src/core.c			\
+		src/game.c
 
 BASICS	=	basics/my_putstr.c		\
 		basics/my_puterror.c		\
