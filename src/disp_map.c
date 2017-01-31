@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 17:31:31 2017 
-** Last update Mon Jan 30 17:48:34 2017 
+** Last update Tue Jan 31 21:09:02 2017 
 */
 
 #include	<unistd.h>
@@ -32,4 +32,13 @@ void		disp_map(char **map)
       my_putchar('\n');
       idx++;
     }
+}
+
+void		disp_my_and_enemy_map(char **map, char **map2)
+{
+  my_putstr("my_positions:\n");
+  disp_map(map);
+  my_putstr("\nenemy's positions:\n");
+  disp_map(map2);
+  my_putstr("\n");
 }

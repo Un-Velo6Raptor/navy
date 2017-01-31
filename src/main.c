@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:36:47 2017 
-** Last update Tue Jan 31 14:26:11 2017 Sahel
+** Last update Tue Jan 31 22:02:54 2017 
 */
 
 #include	<stdlib.h>
@@ -85,21 +85,3 @@ int		prepare_map(t_map *all_map, int argc, char **av)
     return (my_puterror("Can't close the file.\n"));
   return (0);
 }
-/*
-int		main(int argc, char **argv)
-{
-  t_map		*all_map;
-
-  if (argc == 1 || argc > 2)
-    return (help_me());
-  if ((all_map = ini_map()) == NULL)
-    return (84);
-  if (prepare_map(all_map, argc, argv) == 84)
-    return (84);
-  disp_map(all_map->my_map);
-  free_tab(all_map->my_map, 0);
-  free_tab(all_map->enemy_map, 0);
-  free(all_map);
-  return (0);
-}
-*/

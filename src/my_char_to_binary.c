@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 14:16:30 2017 
-** Last update Mon Jan 30 15:14:32 2017 
+** Last update Tue Jan 31 21:16:03 2017 
 */
 
 #include	<stdlib.h>
@@ -26,7 +26,7 @@ int		my_power_rec(int nb, int p)
     {
       idx *= my_power_rec(nb, p - 1);
       if ((nb < 0) && (p % 2 == 1))
-        return (-1 * idx);
+	return (-1 * idx);
     }
   return (idx);
 }

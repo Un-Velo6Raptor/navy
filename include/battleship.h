@@ -5,12 +5,13 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Tue Jan 31 18:46:19 2017 Sahel
+** Last update Tue Jan 31 22:14:16 2017 
 */
 
-#ifndef		BATTLESHIP_H_
-# define	BATTLESHIP_H_
+#ifndef BATTLESHIP_H_
+# define BATTLESHIP_H_
 
+# include	<signal.h>
 # include	"get_next_line.h"
 
 typedef struct	s_map
@@ -41,6 +42,9 @@ void		send(int, char *);
 void		turn_part1(char **, char **, int, int);
 void		turn_part2(char **, char **, int, int);
 int		prepare_map(t_map *, int, char **);
+void		disp_my_and_enemy_map(char **, char **);
+void		connect(int, siginfo_t *, void *);
+void		connect2(int);
 
 /*
 **		Prototypes of file's basics.
@@ -58,6 +62,8 @@ int		my_getnbr(char *);
 int		free_tab(char **, int);
 int		my_strcmp(char *, char *);
 void		ini_gnl(t_buffer *);
+void		my_put_nbr(int);
+void		my_putchar(char);
 
 /*
 **		Prototypes of get_next_line.
@@ -65,4 +71,4 @@ void		ini_gnl(t_buffer *);
 
 char		*get_next_line(int, t_buffer *);
 
-#endif		/* !BATTLESHIP_H_ */
+#endif /* !BATTLESHIP_H_ */

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan  2 13:01:16 2017 
-** Last update Mon Jan 30 22:42:03 2017 
+** Last update Tue Jan 31 21:00:47 2017 
 */
 
 #ifndef GET_NEXT_LINE_H_
