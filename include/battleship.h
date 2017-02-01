@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Tue Jan 31 22:14:16 2017 
+** Last update Wed Feb  1 12:52:41 2017 
 */
 
 #ifndef BATTLESHIP_H_
@@ -25,6 +25,7 @@ typedef struct  s_glob
   char		**av;
   char		byte;
   int		pid;
+  int		last_pid;
 }		t_glob;
 
 /*
@@ -39,12 +40,14 @@ void		disp_map(char **);
 int		check_coo(int, char *, char *);
 char		*receive(int);
 void		send(int, char *);
-void		turn_part1(char **, char **, int, int);
-void		turn_part2(char **, char **, int, int);
+int		turn_part1(char **, char **, int, int);
+int		turn_part2(char **, char **, int, int);
 int		prepare_map(t_map *, int, char **);
 void		disp_my_and_enemy_map(char **, char **);
 void		connect(int, siginfo_t *, void *);
 void		connect2(int);
+int		win_loose(char **, char **);
+void		start(int);
 
 /*
 **		Prototypes of file's basics.
