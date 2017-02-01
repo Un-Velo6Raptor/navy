@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 17:24:11 2017 Sahel
-** Last update Tue Jan 31 21:15:32 2017 
+** Last update Wed Feb  1 10:56:26 2017 Sahel
 */
 
 #include <signal.h>
@@ -57,7 +57,7 @@ void	turn_part2(char **map, char **map2, int pid, int player)
   action[2] = '\0';
   my_putstr(action);
   xoxo = check_xo(map, action);
-  (xoxo == 'o') ? my_putstr(":\tmissed\n\n") : my_putstr(":\thit\n\n");
+  (xoxo == 'o') ? my_putstr(":\tmissed\n\n") : my_putstr(":\thit\n\n"); // IDEM QUE PART 1
   map[action[1] - '1'][(action[0] - 'A') * 2] = xoxo;
   usleep(300000);
   send(pid, my_char_to_binary(xoxo));
@@ -83,7 +83,7 @@ void		turn_part1(char **map, char **map2, int pid, int player)
   send(pid, my_char_to_binary(action[1]));
   usleep(170000);
   xoxo = my_binary_to_char(receive(pid));
-  (xoxo == 'o') ? my_putstr("missed\n\n") : my_putstr("hit\n\n");
+  (xoxo == 'o') ? my_putstr("missed\n\n") : my_putstr("hit\n\n"); //COURS SUR LES TERNAIRES : APPELLE SAHEL
   map2[action[1] - '1'][(action[0] - 'A') * 2] = xoxo;
   turn_part2(map, map2, pid, player);
 }

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue Jan 31 21:21:25 2017 
-** Last update Tue Jan 31 22:02:04 2017 
+** Last update Wed Feb  1 10:42:54 2017 Sahel
 */
 
 #include	<stdlib.h>
@@ -47,7 +47,7 @@ char		*receive(int pid)
     {
       g_glob->byte = '0';
       change();
-      usleep(500000);
+      pause();
       binary[cpt] = g_glob->byte;
       cpt++;
       kill(pid, SIGUSR1);
@@ -69,7 +69,7 @@ void		send(int pid, char *binary)
 	kill(pid, SIGUSR2);
       idx++;
       signal(SIGUSR1, &change_byte);
-      usleep(700000);
+      pause();
     }
 }
 

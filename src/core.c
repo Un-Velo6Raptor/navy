@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:25:13 2017 Sahel
-** Last update Tue Jan 31 22:12:35 2017 
+** Last update Wed Feb  1 10:33:19 2017 Sahel
 */
 
 #include	<signal.h>
@@ -43,7 +43,7 @@ int			client(char **av)
 
   kill(my_getnbr(av[1]), SIGUSR1);
   signal(SIGUSR1, &connect2);
-  sleep(2);
+  pause();
   if (!(maps = ini_map()) ||
       prepare_map(maps, count_tab(g_glob->av), g_glob->av) == 84)
     return (84);
