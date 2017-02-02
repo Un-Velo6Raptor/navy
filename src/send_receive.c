@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue Jan 31 21:21:25 2017 
-** Last update Wed Feb  1 10:42:54 2017 Sahel
+** Last update Thu Feb  2 11:46:18 2017 Lucas Sahel
 */
 
 #include	<stdlib.h>
@@ -50,6 +50,7 @@ char		*receive(int pid)
       pause();
       binary[cpt] = g_glob->byte;
       cpt++;
+      usleep(5000);
       kill(pid, SIGUSR1);
     }
   binary[cpt] = '\0';
@@ -63,6 +64,7 @@ void		send(int pid, char *binary)
   idx = 0;
   while (idx < 8)
     {
+      usleep(5000);
       if (binary[idx] == '0')
 	kill(pid, SIGUSR1);
       else

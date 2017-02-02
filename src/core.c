@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:25:13 2017 Sahel
-** Last update Wed Feb  1 10:33:19 2017 Sahel
+** Last update Thu Feb  2 11:42:12 2017 Lucas Sahel
 */
 
 #include	<signal.h>
@@ -41,7 +41,9 @@ int			client(char **av)
 {
   t_map			*maps;
 
-  kill(my_getnbr(av[1]), SIGUSR1);
+  g_glob->pid = my_getnbr(av[1]);
+  kill(g_glob->pid, SIGUSR1);
+  
   signal(SIGUSR1, &connect2);
   pause();
   if (!(maps = ini_map()) ||
