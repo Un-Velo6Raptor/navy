@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:25:13 2017 Sahel
-** Last update Thu Feb  2 11:42:12 2017 Lucas Sahel
+** Last update Thu Feb  2 12:00:53 2017 Lucas Sahel
 */
 
 #include	<signal.h>
@@ -49,8 +49,7 @@ int			client(char **av)
   if (!(maps = ini_map()) ||
       prepare_map(maps, count_tab(g_glob->av), g_glob->av) == 84)
     return (84);
-  turn_part1(maps->my_map, maps->enemy_map, my_getnbr(av[1]), 2);
-  return (0);
+  return (turn_part1(maps->my_map, maps->enemy_map, my_getnbr(av[1]), 2));
 }
 
 int			main(int ac, char **av)
@@ -73,7 +72,7 @@ int			main(int ac, char **av)
       if (!(maps = ini_map()) ||
 	  prepare_map(maps, count_tab(g_glob->av), g_glob->av) == 84)
 	return (84);
-      turn_part2(maps->my_map, maps->enemy_map, g_glob->pid, 1);
+      return (turn_part2(maps->my_map, maps->enemy_map, g_glob->pid, 1));
     }
   else
     return (client(av));

@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 15:37:45 2017 
-## Last update Tue Jan 31 22:00:23 2017 
+## Last update Thu Feb  2 12:02:27 2017 Lucas Sahel
 ##
 
 SRC	=	src/main.c			\
@@ -17,7 +17,8 @@ SRC	=	src/main.c			\
 		src/core.c			\
 		src/send_receive.c		\
 		src/connect.c			\
-		src/game.c
+		src/game.c			\
+		src/win_loose.c
 
 BASICS	=	basics/my_putstr.c		\
 		basics/my_put_nbr.c		\

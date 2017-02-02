@@ -5,8 +5,10 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Feb  1 12:28:32 2017 Sahel
-** Last update Wed Feb  1 12:33:08 2017 Sahel
+** Last update Thu Feb  2 12:02:52 2017 Lucas Sahel
 */
+
+#include "battleship.h"
 
 static int	win(char **map)
 {
@@ -35,8 +37,14 @@ static int	win(char **map)
 int	win_loose(char **map, char **map2)
 {
   if (win(map))
-    return (2);
+    {
+      my_putstr("Enemy won\n");
+      return (2);
+    }
   if (win(map2))
-    return (1);
+    {
+      my_putstr("I won\n");
+      return (1);
+    }
   return (0);
 }

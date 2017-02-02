@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 17:24:11 2017 Sahel
-** Last update Thu Feb  2 11:46:02 2017 Lucas Sahel
+** Last update Thu Feb  2 12:07:39 2017 Lucas Sahel
 */
 
 #include <signal.h>
@@ -56,6 +56,7 @@ int	turn_part2(char **map, char **map2, int pid, int player)
   struct sigaction act;
   char	action[3];
   char	xoxo;
+  int	ret;
 
   if (player == 1)
     disp_my_and_enemy_map(map, map2);
@@ -76,8 +77,12 @@ int	turn_part2(char **map, char **map2, int pid, int player)
   map[action[1] - '1'][(action[0] - 'A') * 2] = xoxo;
   usleep(300000);
   send(pid, my_char_to_binary(xoxo));
-  turn_part1(map, map2, pid, player);
-  return (0);
+  ret = win_loose(map, map2);
+  if (ret == 1)
+    return (0);
+  if (ret == 2)
+    return (1);
+  return (turn_part1(map, map2, pid, player));
 }
 
 int		turn_part1(char **map, char **map2, int pid, int player)
@@ -85,6 +90,7 @@ int		turn_part1(char **map, char **map2, int pid, int player)
   char		*action;
   t_buffer	gnl;
   char		xoxo;
+  int		ret;
 
   ini_gnl(&gnl);
   if (player == 2)
@@ -102,6 +108,10 @@ int		turn_part1(char **map, char **map2, int pid, int player)
     return (84);
   my_putstr((xoxo == 'o') ? "missed\n\n" : "hit\n\n");
   map2[action[1] - '1'][(action[0] - 'A') * 2] = xoxo;
-  turn_part2(map, map2, pid, player);
-  return (0);
+  ret = win_loose(map, map2);
+  if (ret == 1)
+    return (0);
+  if (ret == 2)
+    return (1);
+  return (turn_part2(map, map2, pid, player));
 }
