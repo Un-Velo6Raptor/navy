@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Wed Feb  1 12:52:41 2017 
+** Last update Fri Feb  3 14:28:37 2017 Sahel
 */
 
 #ifndef BATTLESHIP_H_
@@ -48,6 +48,7 @@ void		connect(int, siginfo_t *, void *);
 void		connect2(int);
 int		win_loose(char **, char **);
 void		start(int);
+void		get_enemy_id(int, siginfo_t *, void *);
 
 /*
 **		Prototypes of file's basics.

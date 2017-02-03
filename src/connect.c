@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue Jan 31 21:25:19 2017 
-** Last update Tue Jan 31 21:39:55 2017 
+** Last update Fri Feb  3 14:22:40 2017 Sahel
 */
 
 #include	<stdio.h>
@@ -29,4 +29,16 @@ void		connect2(int signal)
 {
   (void) signal;
   my_putstr("successfully connected\n\n");
+}
+
+void		start(int signal)
+{
+  (void) signal;
+}
+
+void		get_enemy_id(int sig, siginfo_t *si, void *null)
+{
+  (void) null;
+  (void) sig;
+  g_glob->last_pid = si->si_pid;
 }

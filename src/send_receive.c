@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue Jan 31 21:21:25 2017 
-** Last update Thu Feb  2 11:46:18 2017 Lucas Sahel
+** Last update Fri Feb  3 14:14:27 2017 Sahel
 */
 
 #include	<stdlib.h>
@@ -64,7 +64,7 @@ void		send(int pid, char *binary)
   idx = 0;
   while (idx < 8)
     {
-      usleep(5000);
+      usleep(10000);
       if (binary[idx] == '0')
 	kill(pid, SIGUSR1);
       else

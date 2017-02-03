@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 17:24:11 2017 Sahel
-** Last update Fri Feb  3 12:04:30 2017 Sahel
+** Last update Fri Feb  3 14:33:58 2017 Sahel
 */
 
 #include <signal.h>
@@ -29,11 +29,6 @@ int		is_valid(char *str)
   return (0);
 }
 
-void	start(int signal)
-{
-  (void) signal;
-}
-
 char	check_xo(char **map, char *action)
 {
   char	map_char;
@@ -44,11 +39,14 @@ char	check_xo(char **map, char *action)
   return ('x');
 }
 
-void	get_enemy_id(int sig, siginfo_t *si, void *null)
+struct sigaction	init_sa(void)
 {
-  (void) null;
-  (void) sig;
-  g_glob->last_pid = si->si_pid;
+  struct sigaction	sact;
+
+  sact.sa_sigaction = &get_enemy_id;
+  sact.sa_flags = SA_SIGINFO;
+  sigemptyset(&sact.sa_mask);
+  return (sact);
 }
 
 int	turn_part2(char **map, char **map2, int pid, int player)
@@ -61,28 +59,22 @@ int	turn_part2(char **map, char **map2, int pid, int player)
   if (player == 2)
     disp_my_and_enemy_map(map, map2);
   my_putstr("waiting for enemy's attack...\n");
-  sact.sa_sigaction = &get_enemy_id;
-  sact.sa_flags = SA_SIGINFO;
-  sigemptyset(&sact.sa_mask);
+  sact = init_sa();
   sigaction(SIGUSR1, &sact, NULL);
   pause();
-  if (g_glob->pid != g_glob->last_pid)
-    return (84);
-  if ((action[0] = my_binary_to_char(receive(pid))) == '\0' ||
+  if (g_glob->pid != g_glob->last_pid ||
+      (action[0] = my_binary_to_char(receive(pid))) == '\0' ||
       (action[1] = my_binary_to_char(receive(pid))) == '\0')
     return (84);
   write(1, action, 2);
   xoxo = check_xo(map, action);
-  my_putstr((xoxo == 'o') ? ":\tmissed\n\n" : ":\thit\n\n");
+  my_putstr((xoxo == 'o') ? ": missed\n\n" : ": hit\n\n");
   map[action[1] - '1'][(action[0] - 'A') * 2] = xoxo;
-  usleep(300000);
+  usleep(10000);
   send(pid, my_char_to_binary(xoxo));
   ret = win_loose(map, map2);
-  if (ret == 1)
-    return (0);
-  if (ret == 2)
-    return (1);
-  return (turn_part1(map, map2, pid, player));
+  return ((ret) ? ((ret == 1) ? (0) : (1)) :
+	  (turn_part1(map, map2, pid, player)));
 }
 
 int		turn_part1(char **map, char **map2, int pid, int player)
@@ -95,25 +87,21 @@ int		turn_part1(char **map, char **map2, int pid, int player)
   ini_gnl(&gnl);
   if (player == 1)
     disp_my_and_enemy_map(map, map2);
-  my_putstr("attack:\t");
+  my_putstr("attack: ");
   while (!is_valid(action = get_next_line(0, &gnl)));
   my_putstr(action);
-  my_putstr(":\t");
-  usleep(100000);
+  my_putstr(": ");
+  usleep(5000);
   kill(pid, SIGUSR1);
-  usleep(100000);
+  usleep(30000);
   send(pid, my_char_to_binary(action[0]));
   send(pid, my_char_to_binary(action[1]));
-  usleep(170000);
   if ((xoxo = my_binary_to_char(receive(pid))) == '\0')
     return (84);
   my_putstr((xoxo == 'o') ? "missed\n\n" : "hit\n\n");
   map2[action[1] - '1'][(action[0] - 'A') * 2] = xoxo;
   ret = win_loose(map, map2);
   free(action);
-  if (ret == 1)
-    return (0);
-  if (ret == 2)
-    return (1);
-  return (turn_part2(map, map2, pid, player));
+  return ((ret) ? ((ret == 1) ? (0) : (1)) :
+	  (turn_part2(map, map2, pid, player)));
 }
