@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 17:24:11 2017 Sahel
-** Last update Thu Feb  2 12:07:39 2017 Lucas Sahel
+** Last update Fri Feb  3 12:04:30 2017 Sahel
 */
 
 #include <signal.h>
@@ -53,18 +53,18 @@ void	get_enemy_id(int sig, siginfo_t *si, void *null)
 
 int	turn_part2(char **map, char **map2, int pid, int player)
 {
-  struct sigaction act;
+  struct sigaction sact;
   char	action[3];
   char	xoxo;
   int	ret;
 
-  if (player == 1)
+  if (player == 2)
     disp_my_and_enemy_map(map, map2);
   my_putstr("waiting for enemy's attack...\n");
-  sigemptyset(&act.sa_mask);
-  act.sa_sigaction = &get_enemy_id;
-  act.sa_flags = SA_SIGINFO;
-  sigaction(SIGUSR1, &act, NULL);
+  sact.sa_sigaction = &get_enemy_id;
+  sact.sa_flags = SA_SIGINFO;
+  sigemptyset(&sact.sa_mask);
+  sigaction(SIGUSR1, &sact, NULL);
   pause();
   if (g_glob->pid != g_glob->last_pid)
     return (84);
@@ -93,14 +93,15 @@ int		turn_part1(char **map, char **map2, int pid, int player)
   int		ret;
 
   ini_gnl(&gnl);
-  if (player == 2)
+  if (player == 1)
     disp_my_and_enemy_map(map, map2);
   my_putstr("attack:\t");
   while (!is_valid(action = get_next_line(0, &gnl)));
   my_putstr(action);
   my_putstr(":\t");
+  usleep(100000);
   kill(pid, SIGUSR1);
-  usleep(10000);
+  usleep(100000);
   send(pid, my_char_to_binary(action[0]));
   send(pid, my_char_to_binary(action[1]));
   usleep(170000);
@@ -109,6 +110,7 @@ int		turn_part1(char **map, char **map2, int pid, int player)
   my_putstr((xoxo == 'o') ? "missed\n\n" : "hit\n\n");
   map2[action[1] - '1'][(action[0] - 'A') * 2] = xoxo;
   ret = win_loose(map, map2);
+  free(action);
   if (ret == 1)
     return (0);
   if (ret == 2)

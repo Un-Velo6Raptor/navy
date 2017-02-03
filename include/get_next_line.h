@@ -5,14 +5,14 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan  2 13:01:16 2017 
-** Last update Tue Jan 31 21:00:47 2017 
+** Last update Fri Feb  3 11:18:29 2017 Sahel
 */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 
 # ifndef READ_SIZE
-#  define READ_SIZE (42)
+#  define READ_SIZE (1)
 # endif /* !READ_SIZE */
 
 typedef struct	s_buffer
