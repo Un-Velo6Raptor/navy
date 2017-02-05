@@ -5,14 +5,13 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Sun Feb  5 18:31:25 2017 
+** Last update Sun Feb  5 20:05:44 2017 
 */
 
 #ifndef BATTLESHIP_H_
 # define BATTLESHIP_H_
 
 # include	<signal.h>
-# include	"get_next_line.h"
 
 typedef struct	s_map
 {
@@ -66,16 +65,9 @@ int		count_tab(char **);
 int		my_getnbr(char *);
 int		free_tab(char **, int);
 int		my_strcmp(char *, char *);
-void		ini_gnl(t_buffer *);
 void		my_put_nbr(int);
 void		my_putchar(char);
 char		*my_good_str(char *);
 void		my_swap(char **);
-
-/*
-**		Prototypes of get_next_line.
-*/
-
-char		*get_next_line(int, t_buffer *);
 
 #endif /* !BATTLESHIP_H_ */

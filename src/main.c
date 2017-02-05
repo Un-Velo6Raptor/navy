@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:36:47 2017 
-** Last update Sun Feb  5 17:12:09 2017 
+** Last update Sun Feb  5 19:54:44 2017 
 */
 
 #include	<stdlib.h>
@@ -14,7 +14,7 @@
 #include	<fcntl.h>
 #include	<unistd.h>
 #include	"battleship.h"
-#include	"get_next_line.h"
+#include	"gnl.h"
 
 int		change_map(t_map *all_map, char size, char *s1, char *s2)
 {
@@ -64,15 +64,13 @@ int		add_ship(t_map *all_map, char *ship)
 
 int		prepare_map(t_map *all_map, int argc, char **av)
 {
-  t_buffer	news;
   char		*str;
   int		fd;
 
   fd = open((argc == 3) ? av[2] : av[1], O_RDONLY);
-  ini_gnl(&news);
   if (fd == -1)
     return (my_puterror("Can't open the file.\n"));
-  while ((str = get_next_line(fd, &news)) != NULL)
+  while ((str = get_next_line(fd)) != NULL)
     {
       str = my_good_str(str);
       if ((add_ship(all_map, str)) == 84)

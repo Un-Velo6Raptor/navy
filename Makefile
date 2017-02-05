@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 15:37:45 2017 
-## Last update Sun Feb  5 19:46:45 2017 Sahel
+## Last update Sun Feb  5 20:12:05 2017 
 ##
 
 SRC	=	src/main.c			\
@@ -32,7 +32,6 @@ BASICS	=	basics/my_putstr.c		\
 		basics/my_getnbr.c		\
 		basics/my_char_isnum.c		\
 		basics/count_tab.c		\
-		basics/ini_gnl.c		\
 		basics/my_swap.c		\
 		basics/my_strcmp.c
 
@@ -46,7 +45,7 @@ NAME	=	navy
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		gcc -o $(NAME) $(OBJ)
+		gcc -o $(NAME) $(OBJ) -L. -lgnl
 
 clean:
 		rm -f $(OBJ)
