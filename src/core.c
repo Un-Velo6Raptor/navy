@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:25:13 2017 Sahel
-** Last update Sun Feb  5 17:06:39 2017 Sahel
+** Last update Sun Feb  5 19:23:28 2017 Sahel
 */
 
 #include	<signal.h>
@@ -64,7 +64,7 @@ int			main(int ac, char **av)
   my_putstr("\n");
   if (ac == 2)
     {
-      my_putstr("waiting for ennemy connexion...\n");
+      my_putstr("waiting for enemy connection...\n");
       sigaction(SIGUSR1, &act, NULL);
       pause();
       usleep(100000);
