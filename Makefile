@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 15:37:45 2017 
-## Last update Sun Feb  5 18:28:48 2017 
+## Last update Sun Feb  5 19:46:45 2017 Sahel
 ##
 
 SRC	=	src/main.c			\
@@ -36,11 +36,8 @@ BASICS	=	basics/my_putstr.c		\
 		basics/my_swap.c		\
 		basics/my_strcmp.c
 
-GNL	=	gnl/get_next_line.c
-
 OBJ	=	$(SRC:.c=.o)			\
-		$(BASICS:.c=.o)			\
-		$(GNL:.c=.o)
+		$(BASICS:.c=.o)
 
 CFLAGS	=	-g -Wall -Wextra -I include/
 
