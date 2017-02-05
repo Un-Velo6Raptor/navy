@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue Jan 31 21:25:19 2017 
-** Last update Fri Feb  3 14:22:40 2017 Sahel
+** Last update Sun Feb  5 17:03:38 2017 Sahel
 */
 
 #include	<stdio.h>
@@ -20,7 +20,7 @@ void		connect(int signal, siginfo_t *act, void *null)
   (void) signal;
   (void) null;
   g_glob->pid = act->si_pid;
-  my_putstr("ennemy connected\n\n");
+  my_putstr("\nennemy connected\n\n");
   usleep(100000);
   kill(g_glob->pid, SIGUSR1);
 }
