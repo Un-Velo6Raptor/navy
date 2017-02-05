@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:25:13 2017 Sahel
-** Last update Fri Feb  3 11:54:31 2017 Sahel
+** Last update Sun Feb  5 17:06:39 2017 Sahel
 */
 
 #include	<signal.h>
@@ -37,17 +37,12 @@ int		init_glob(char **av)
   return (0);
 }
 
-int			client(char **av)
+int			client(char **av, t_map *maps)
 {
-  t_map			*maps;
-
   g_glob->pid = my_getnbr(av[1]);
   kill(g_glob->pid, SIGUSR1);
   signal(SIGUSR1, &connect2);
   pause();
-  if (!(maps = ini_map()) ||
-      prepare_map(maps, count_tab(g_glob->av), g_glob->av) == 84)
-    return (84);
   return (turn_part2(maps->my_map, maps->enemy_map, my_getnbr(av[1]), 2));
 }
 
@@ -58,6 +53,9 @@ int			main(int ac, char **av)
 
   if (ac == 1 || ac > 3 || init_glob(av) == 84)
     return (help_me());
+  if (!(maps = ini_map()) ||
+      prepare_map(maps, count_tab(g_glob->av), g_glob->av) == 84)
+    return (84);
   act.sa_sigaction = &connect;
   act.sa_flags = SA_SIGINFO;
   sigemptyset(&act.sa_mask);
@@ -70,11 +68,8 @@ int			main(int ac, char **av)
       sigaction(SIGUSR1, &act, NULL);
       pause();
       usleep(100000);
-      if (!(maps = ini_map()) ||
-	  prepare_map(maps, count_tab(g_glob->av), g_glob->av) == 84)
-	return (84);
       return (turn_part1(maps->my_map, maps->enemy_map, g_glob->pid, 1));
     }
   else
-    return (client(av));
+    return (client(av, maps));
 }
