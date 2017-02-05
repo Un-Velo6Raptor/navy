@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:36:47 2017 
-** Last update Tue Jan 31 22:02:54 2017 
+** Last update Sun Feb  5 17:12:09 2017 
 */
 
 #include	<stdlib.h>
@@ -68,12 +68,13 @@ int		prepare_map(t_map *all_map, int argc, char **av)
   char		*str;
   int		fd;
 
-  (argc == 3) ? (fd = open(av[2], O_RDONLY)) : (fd = open(av[1], O_RDONLY));
+  fd = open((argc == 3) ? av[2] : av[1], O_RDONLY);
   ini_gnl(&news);
   if (fd == -1)
     return (my_puterror("Can't open the file.\n"));
   while ((str = get_next_line(fd, &news)) != NULL)
     {
+      str = my_good_str(str);
       if ((add_ship(all_map, str)) == 84)
 	{
 	  free(str);

@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 15:37:45 2017 
-## Last update Thu Feb  2 12:02:27 2017 Lucas Sahel
+## Last update Sun Feb  5 18:28:48 2017 
 ##
 
 SRC	=	src/main.c			\
@@ -18,6 +18,7 @@ SRC	=	src/main.c			\
 		src/send_receive.c		\
 		src/connect.c			\
 		src/game.c			\
+		src/cg_str.c			\
 		src/win_loose.c
 
 BASICS	=	basics/my_putstr.c		\
@@ -32,6 +33,7 @@ BASICS	=	basics/my_putstr.c		\
 		basics/my_char_isnum.c		\
 		basics/count_tab.c		\
 		basics/ini_gnl.c		\
+		basics/my_swap.c		\
 		basics/my_strcmp.c
 
 GNL	=	gnl/get_next_line.c

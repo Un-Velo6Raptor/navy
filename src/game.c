@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 17:24:11 2017 Sahel
-** Last update Fri Feb  3 14:33:58 2017 Sahel
+** Last update Sun Feb  5 18:45:05 2017 
 */
 
 #include <signal.h>
@@ -88,7 +88,7 @@ int		turn_part1(char **map, char **map2, int pid, int player)
   if (player == 1)
     disp_my_and_enemy_map(map, map2);
   my_putstr("attack: ");
-  while (!is_valid(action = get_next_line(0, &gnl)));
+  while (!is_valid(action = cg_str(get_next_line(0, &gnl))));
   my_putstr(action);
   my_putstr(": ");
   usleep(5000);

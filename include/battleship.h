@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Fri Feb  3 14:28:37 2017 Sahel
+** Last update Sun Feb  5 18:31:25 2017 
 */
 
 #ifndef BATTLESHIP_H_
@@ -49,6 +49,7 @@ void		connect2(int);
 int		win_loose(char **, char **);
 void		start(int);
 void		get_enemy_id(int, siginfo_t *, void *);
+char		*cg_str(char *);
 
 /*
 **		Prototypes of file's basics.
@@ -68,6 +69,8 @@ int		my_strcmp(char *, char *);
 void		ini_gnl(t_buffer *);
 void		my_put_nbr(int);
 void		my_putchar(char);
+char		*my_good_str(char *);
+void		my_swap(char **);
 
 /*
 **		Prototypes of get_next_line.

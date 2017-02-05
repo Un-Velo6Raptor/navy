@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 19:56:49 2017 
-** Last update Mon Jan 30 21:00:34 2017 
+** Last update Sun Feb  5 18:22:33 2017 
 */
 
 #include	"battleship.h"
@@ -44,6 +44,10 @@ int		check_coo(int size, char *s1, char *s2)
 {
   if (my_strlen(s1) != 2 || my_strlen(s2) != 2 || size < 2 || size > 5)
     return (84);
+  if (s1[0] < 'A' || s1[0] > 'Z')
+    my_swap(&s1);
+  if (s2[0] < 'A' || s2[0] > 'Z')
+    my_swap(&s2);
   if ((s1[0] != s2[0]) && (s1[1] == s2[1]))
     return ((diff_two_car(s1[0], s2[0], 'A') != size) ? (84) : (0));
   if ((s1[0] == s2[0]) && (s1[1] != s2[1]))
