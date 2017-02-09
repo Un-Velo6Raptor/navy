@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Wed Feb  1 21:08:01 2017 
-** Last update Sat Feb  4 07:51:26 2017 
+** Last update Sun Feb  5 22:53:58 2017 
 */
 
 #ifndef MY_H_
@@ -32,7 +32,6 @@ typedef struct		s_mode_background
   int			ship_3;
   int			ship_4;
   int			ship_5;
-  
 }			t_mode_background;
 
 # define        HEIGHT  buffer->height
@@ -50,22 +49,28 @@ int			help_me(void);
 char			**create_map(void);
 void			creator_loop(t_my_framebuffer *, t_core_window *,
 				     char **, t_mode_background *);
-void			background(t_my_framebuffer *, char **, t_mode_background *);
-void			my_draw_line(t_my_framebuffer *, sfVector2i, sfVector2i, sfColor);
+void			background(t_my_framebuffer *, char **,
+				   t_mode_background *);
+void			my_draw_line(t_my_framebuffer *, sfVector2i,
+				     sfVector2i, sfColor);
 sfVector2i		create_vector(int, int);
 void			reset_frame(t_my_framebuffer *);
 void			ini_mode(t_mode_background *);
-void			bouton_display(t_mode_background *, t_my_framebuffer *);
+void			bouton_display(t_mode_background *,
+				       t_my_framebuffer *);
 int			gest_mouse(t_mode_background *, t_my_framebuffer *,
 				   char ***, sfVector2i);
-int			add_ship(t_my_framebuffer *, t_mode_background *, char ***, sfVector2i);
-int			check_the_ship(int, char ***, sfVector2i, t_my_framebuffer *);
+int			add_ship(t_my_framebuffer *, t_mode_background *,
+				 char ***, sfVector2i);
+int			check_the_ship(int, char ***, sfVector2i,
+				       t_my_framebuffer *);
 int			cross(char **, int, sfVector2i);
 void			update(char **, t_my_framebuffer *);
 sfColor			color_bouton(sfVector2i);
 int			nb_ship_place(char **, int);
 sfColor			set_pixel_color(int, int, int);
-void			fill_indic_good(t_my_framebuffer *, sfVector2i, sfVector2i, sfColor);
+void			fill_indic_good(t_my_framebuffer *, sfVector2i,
+					sfVector2i, sfColor);
 int			create_this_file(char *, char **);
 int			check_namme(char *);
 sfMusic			*start_music(char *);

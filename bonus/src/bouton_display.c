@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Thu Feb  2 18:38:24 2017 
-** Last update Fri Feb  3 17:16:39 2017 
+** Last update Sun Feb  5 22:56:37 2017 
 */
 
 #include	<SFML/Graphics/RenderWindow.h>
@@ -45,14 +45,18 @@ void		bouton(t_my_framebuffer *buffer, sfVector2i mode,
     }
 }
 
-void		bouton_display(t_mode_background *mode, t_my_framebuffer *buffer)
+void		bouton_display(t_mode_background *mode,
+			       t_my_framebuffer *buffer)
 {
   bouton(buffer, create_vector(2, mode->ship_2), create_vector(31, 1),
 	 create_vector(WIDTH - 409, HEIGHT / 5));
-  bouton(buffer, create_vector(3, mode->ship_3), create_vector(31, 1 + (HEIGHT / 5)),
+  bouton(buffer, create_vector(3, mode->ship_3),
+	 create_vector(31, 1 + (HEIGHT / 5)),
 	 create_vector(WIDTH - 409, (HEIGHT / 5) * 2));
-  bouton(buffer, create_vector(4, mode->ship_4), create_vector(31, 1 + (HEIGHT / 5) * 2),
+  bouton(buffer, create_vector(4, mode->ship_4),
+	 create_vector(31, 1 + (HEIGHT / 5) * 2),
 	 create_vector(WIDTH - 409, (HEIGHT / 5) * 3));
-  bouton(buffer, create_vector(5, mode->ship_5), create_vector(31, 1 + (HEIGHT / 5) * 3),
+  bouton(buffer, create_vector(5, mode->ship_5),
+	 create_vector(31, 1 + (HEIGHT / 5) * 3),
 	 create_vector(WIDTH - 409, (HEIGHT / 5) * 4));
 }

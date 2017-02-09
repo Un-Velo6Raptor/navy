@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Wed Feb  1 21:01:24 2017 
-** Last update Sat Feb  4 07:50:12 2017 
+** Last update Sun Feb  5 23:01:00 2017 
 */
 
 #include	<stdlib.h>
@@ -14,7 +14,7 @@
 int		main(int argc, char **argv)
 {
   char		**map;
-  
+
   if (argc != 2 || my_strcmp(argv[1], "-h") != 1 ||
       check_namme(argv[1]) == 84)
     return (help_me());

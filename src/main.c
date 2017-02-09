@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:36:47 2017 
-** Last update Sun Feb  5 19:54:44 2017 
+** Last update Thu Feb  9 15:44:55 2017 
 */
 
 #include	<stdlib.h>
@@ -15,6 +15,13 @@
 #include	<unistd.h>
 #include	"battleship.h"
 #include	"gnl.h"
+
+int		free_this(char *str)
+{
+  if (str != NULL)
+    free(str);
+  return (84);
+}
 
 int		change_map(t_map *all_map, char size, char *s1, char *s2)
 {
@@ -66,21 +73,25 @@ int		prepare_map(t_map *all_map, int argc, char **av)
 {
   char		*str;
   int		fd;
+  int		idx;
 
-  fd = open((argc == 3) ? av[2] : av[1], O_RDONLY);
-  if (fd == -1)
+  idx = 0;
+  if ((fd = open((argc == 3) ? av[2] : av[1], O_DIRECTORY)) > 0)
+    {
+      close(fd);
+      return (my_puterror("Not a file.\n"));
+    }
+  if ((fd = open((argc == 3) ? av[2] : av[1], O_RDONLY)) == -1)
     return (my_puterror("Can't open the file.\n"));
   while ((str = get_next_line(fd)) != NULL)
     {
       str = my_good_str(str);
       if ((add_ship(all_map, str)) == 84)
-	{
-	  free(str);
-	  return (84);
-	}
+	return (free_this(str));
+      idx++;
       free(str);
     }
   if (close(fd) == -1)
     return (my_puterror("Can't close the file.\n"));
-  return (0);
+  return ((idx != 4) ? 84 : 0);
 }

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Thu Feb  2 13:17:12 2017 
-** Last update Sat Feb  4 05:45:30 2017 
+** Last update Sun Feb  5 22:55:23 2017 
 */
 
 #include	<SFML/Graphics/RenderWindow.h>
@@ -15,7 +15,7 @@
 void		case_ship(t_my_framebuffer *buffer)
 {
   int		idx;
-  
+
   idx = 0;
   while (idx < HEIGHT - 10)
     {
@@ -51,7 +51,6 @@ void		grid(t_my_framebuffer *buffer)
     }
   case_ship(buffer);
 }
-
 
 void		fill_indic_good(t_my_framebuffer *buffer, sfVector2i from,
 				sfVector2i to, sfColor color)

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri Feb  3 12:13:25 2017 
-** Last update Fri Feb  3 18:25:11 2017 
+** Last update Sun Feb  5 23:00:50 2017 
 */
 
 #include	<SFML/Graphics/RenderWindow.h>
@@ -34,7 +34,7 @@ sfVector2i	ship_already_add(char **map, int ship)
   idx = 0;
   while (map[idx] != NULL)
     {
-  idx2 = 0;
+      idx2 = 0;
       while (map[idx][idx2] != '\0')
 	{
 	  if (map[idx][idx2] == ship + '0')
@@ -71,12 +71,15 @@ int		add_ship(t_my_framebuffer *buffer, t_mode_background *mode,
   if ((*map)[pos.y / 52][(pos.x - (WIDTH - 409)) / 51] != the_ship + '0' &&
       ((*map)[pos.y / 52][(pos.x - (WIDTH - 409)) / 51] != '.'))
     return (0);
-  else if ((*map)[pos.y / 52][(pos.x - (WIDTH - 409)) / 50] == the_ship + '0' &&
+  else if ((*map)[pos.y / 52][(pos.x -
+			       (WIDTH - 409)) / 50] == the_ship + '0' &&
 	   cross(*map, the_ship, create_vector((pos.x - (WIDTH - 409)) / 50,
 					       pos.y / 52)) <= 1)
-    (*map)[pos.y / 52][(pos.x - (WIDTH - 409)) / 51] = '.';
+    (*map)[pos.y / 52][(pos.x -
+			(WIDTH - 409)) / 51] = '.';
   else if (tmp.x == -1)
-    (*map)[pos.y / 52][(pos.x - (WIDTH - 409)) / 51] = the_ship + '0';
+    (*map)[pos.y / 52][(pos.x -
+			(WIDTH - 409)) / 51] = the_ship + '0';
   else
     check_the_ship(the_ship, map, create_vector((pos.x - (WIDTH - 409)) / 51,
 						pos.y / 52), buffer);
