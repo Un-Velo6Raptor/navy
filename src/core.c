@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:25:13 2017 Sahel
-** Last update Sun Feb  5 19:23:28 2017 Sahel
+** Last update Thu Feb  9 16:02:31 2017 Sahel
 */
 
 #include	<signal.h>
@@ -16,24 +16,10 @@
 
 t_glob	*g_glob;
 
-int		init_glob(char **av)
+int		init_glob()
 {
   if ((g_glob = malloc(sizeof(t_glob))) == NULL)
     return (84);
-  if ((g_glob->av = malloc(sizeof(char *) * 4)) == NULL)
-    return (84);
-  if ((g_glob->av[0] = my_strdup(av[0])) == NULL)
-    return (84);
-  if ((g_glob->av[1] = my_strdup(av[1])) == NULL)
-    return (84);
-  if (av[2])
-    {
-      if ((g_glob->av[2] = my_strdup(av[2])) == NULL)
-	return (84);
-      g_glob->av[3] = NULL;
-    }
-  else
-    g_glob->av[2] = NULL;
   return (0);
 }
 
@@ -54,7 +40,7 @@ int			main(int ac, char **av)
   if (ac == 1 || ac > 3 || init_glob(av) == 84)
     return (help_me());
   if (!(maps = ini_map()) ||
-      prepare_map(maps, count_tab(g_glob->av), g_glob->av) == 84)
+      prepare_map(maps, count_tab(av), av) == 84)
     return (84);
   act.sa_sigaction = &connect;
   act.sa_flags = SA_SIGINFO;

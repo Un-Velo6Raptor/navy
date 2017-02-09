@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Sun Feb  5 20:05:44 2017 
+** Last update Thu Feb  9 16:01:36 2017 Sahel
 */
 
 #ifndef BATTLESHIP_H_
@@ -21,7 +21,6 @@ typedef struct	s_map
 
 typedef struct  s_glob
 {
-  char		**av;
   char		byte;
   int		pid;
   int		last_pid;
