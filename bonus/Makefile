@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Thu Dec  8 13:59:46 2016 
-## Last update Sat Feb  4 05:45:47 2017 
+## Last update Thu Feb 16 16:57:19 2017 Sahel
 ##
 
 SRC	=	src/main.c			\
@@ -47,7 +47,7 @@ BASICS	=	basics/my_strdup.c		\
 OBJ	=	$(SRC:.c=.o)			\
 		$(BASICS:.c=.o)
 
-CFLAGS	=	-g -Wall -Wextra -I include/
+CFLAGS	=	-Wall -Wextra -I include/
 
 NAME	=	map_creator
 
