@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 15:37:45 2017 
-## Last update Sun Feb  5 20:12:05 2017 
+## Last update Thu Feb 16 16:57:46 2017 Sahel
 ##
 
 SRC	=	src/main.c			\
@@ -38,7 +38,7 @@ BASICS	=	basics/my_putstr.c		\
 OBJ	=	$(SRC:.c=.o)			\
 		$(BASICS:.c=.o)
 
-CFLAGS	=	-g -Wall -Wextra -I include/
+CFLAGS	=	-Wall -Wextra -I include/
 
 NAME	=	navy
 
