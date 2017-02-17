@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:22:33 2017 
-** Last update Thu Feb  9 16:01:36 2017 Sahel
+** Last update Mon Feb 13 11:45:21 2017 
 */
 
 #ifndef BATTLESHIP_H_
@@ -35,7 +35,7 @@ char		my_binary_to_char(char *);
 int		help_me(void);
 t_map		*ini_map(void);
 void		disp_map(char **);
-int		check_coo(int, char *, char *);
+int		check_coo(int, char *, char *, int **);
 char		*receive(int);
 void		send(int, char *);
 int		turn_part1(char **, char **, int, int);
@@ -48,6 +48,7 @@ int		win_loose(char **, char **);
 void		start(int);
 void		get_enemy_id(int, siginfo_t *, void *);
 char		*cg_str(char *);
+int		check_all_ship(int **);
 
 /*
 **		Prototypes of file's basics.

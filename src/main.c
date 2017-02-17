@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 15:36:47 2017 
-** Last update Thu Feb  9 15:44:55 2017 
+** Last update Mon Feb 13 11:28:04 2017 
 */
 
 #include	<stdlib.h>
@@ -21,6 +21,18 @@ int		free_this(char *str)
   if (str != NULL)
     free(str);
   return (84);
+}
+
+int		ini_all_ship(int **idx, int *cpt)
+{
+  (*cpt) = 0;
+  if (((*idx) = malloc(sizeof(int) * 4)) == NULL)
+    return (84);
+  (*idx)[0] = 2;
+  (*idx)[1] = 3;
+  (*idx)[2] = 4;
+  (*idx)[3] = 5;
+  return (0);
 }
 
 int		change_map(t_map *all_map, char size, char *s1, char *s2)
@@ -51,7 +63,7 @@ int		change_map(t_map *all_map, char size, char *s1, char *s2)
   return (0);
 }
 
-int		add_ship(t_map *all_map, char *ship)
+int		add_ship(t_map *all_map, char *ship, int **all_ship)
 {
   char		**tab;
 
@@ -62,7 +74,7 @@ int		add_ship(t_map *all_map, char *ship)
   if (my_strlen(tab[0]) != 1 || my_char_isnum(tab[0][0]) != 0 ||
       count_tab(tab) != 3)
     return (free_tab(tab, 84));
-  if (check_coo(my_getnbr(tab[0]), tab[1], tab[2]) == 84)
+  if (check_coo(my_getnbr(tab[0]), tab[1], tab[2], all_ship) == 84)
     return (free_tab(tab, 84));
   if (change_map(all_map, tab[0][0], tab[1], tab[2]) == 84)
     return (free_tab(tab, 84));
@@ -72,10 +84,12 @@ int		add_ship(t_map *all_map, char *ship)
 int		prepare_map(t_map *all_map, int argc, char **av)
 {
   char		*str;
+  int		*all_ship;
   int		fd;
   int		idx;
 
-  idx = 0;
+  if (ini_all_ship(&all_ship, &idx) == 84)
+    return (84);
   if ((fd = open((argc == 3) ? av[2] : av[1], O_DIRECTORY)) > 0)
     {
       close(fd);
@@ -86,12 +100,12 @@ int		prepare_map(t_map *all_map, int argc, char **av)
   while ((str = get_next_line(fd)) != NULL)
     {
       str = my_good_str(str);
-      if ((add_ship(all_map, str)) == 84)
+      if ((add_ship(all_map, str, &all_ship)) == 84)
 	return (free_this(str));
       idx++;
       free(str);
     }
   if (close(fd) == -1)
     return (my_puterror("Can't close the file.\n"));
-  return ((idx != 4) ? 84 : 0);
+  return ((idx != 4 || check_all_ship(&all_ship) != 0) ? 84 : 0);
 }
