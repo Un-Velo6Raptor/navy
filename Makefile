@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 15:37:45 2017 
-## Last update Thu Feb 16 16:57:46 2017 Sahel
+## Last update Fri Feb 17 11:10:34 2017 
 ##
 
 SRC	=	src/main.c			\
@@ -19,6 +19,7 @@ SRC	=	src/main.c			\
 		src/connect.c			\
 		src/game.c			\
 		src/cg_str.c			\
+		src/check_all_ship.c		\
 		src/win_loose.c
 
 BASICS	=	basics/my_putstr.c		\
