@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 17:31:31 2017 
-** Last update Tue Jan 31 21:09:02 2017 
+** Last update Fri Feb 17 11:21:39 2017 Sahel
 */
 
 #include	<unistd.h>
@@ -36,7 +36,7 @@ void		disp_map(char **map)
 
 void		disp_my_and_enemy_map(char **map, char **map2)
 {
-  my_putstr("my_positions:\n");
+  my_putstr("my positions:\n");
   disp_map(map);
   my_putstr("\nenemy's positions:\n");
   disp_map(map2);
