@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri Feb  3 14:46:29 2017 
-** Last update Fri Feb  3 17:20:02 2017 
+** Last update Sun Feb 19 22:08:04 2017 
 */
 
 #include	<SFML/Graphics/RenderWindow.h>
@@ -13,7 +13,8 @@
 #include	"framefuffer.h"
 #include	"my.h"
 
-void		disp_case(sfVector2i pos, t_my_framebuffer *buffer, int the_ship)
+void		disp_case(sfVector2i pos, t_my_framebuffer *buffer,
+			  int the_ship)
 {
   sfColor	color;
   sfVector2i	save;

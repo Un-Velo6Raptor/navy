@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Feb  1 12:28:32 2017 Sahel
-** Last update Fri Feb 17 11:37:46 2017 Sahel
+** Last update Sun Feb 19 21:54:31 2017 
 */
 
 #include "battleship.h"
@@ -39,14 +39,12 @@ int	win_loose(char **map, char **map2)
   if (win(map))
     {
       disp_my_and_enemy_map(map, map2);
-      usleep(30000);
       my_putstr("Enemy won\n");
       return (2);
     }
   if (win(map2))
     {
       disp_my_and_enemy_map(map, map2);
-      usleep(30000);
       my_putstr("I won\n");
       return (1);
     }
